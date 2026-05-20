@@ -3,38 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Free AI</title>
+    <title>My Free AI Chatbot</title>
     <style>
-        body { font-family: Arial, sans-serif; background: #0d1117; color: #c9d1d9; margin: 0; padding: 16px; }
-        #chat { height: 70vh; overflow-y: scroll; border: 1px solid #30363d; padding: 10px; margin-bottom: 10px; background: #161b22; }
-        .message { margin: 8px 0; padding: 8px; border-radius: 8px; }
-        .user { background: #238636; text-align: right; }
-        .ai { background: #30363d; }
+        body { font-family: Arial; margin: 0; padding: 0; background: #121212; color: #fff; }
+        #chat { height: 80vh; overflow-y: auto; padding: 20px; }
+        .message { margin: 10px 0; padding: 10px; border-radius: 10px; }
+        .user { background: #0d47a1; margin-left: 20%; }
+        .ai { background: #333; margin-right: 20%; }
+        input { width: 100%; padding: 15px; }
     </style>
 </head>
 <body>
-    <h1>🤖 My Free AI</h1>
+    <h1 style="text-align:center">My Free AI</h1>
     <div id="chat"></div>
-    <input type="text" id="input" placeholder="Ask me anything..." style="width:70%">
-    <button onclick="sendMessage()">Send</button>
-
+    <input type="text" id="input" placeholder="Type a message..." onkeypress="if(event.key==='Enter') sendMessage()">
     <script>
         async function sendMessage() {
             const input = document.getElementById('input');
             const chat = document.getElementById('chat');
-            const text = input.value.trim();
-            if (!text) return;
+            const msg = input.value.trim();
+            if (!msg) return;
 
-            // Add user message
-            chat.innerHTML += `<div class="message user">You: ${text}</div>`;
+            chat.innerHTML += `<div class="message user">You: ${msg}</div>`;
             input.value = '';
-            chat.scrollTop = chat.scrollHeight;
 
-            // Placeholder AI response (you can replace with real free API later)
+            // Simple demo response
             setTimeout(() => {
-                chat.innerHTML += `<div class="message ai">AI: Hello! I'm your free custom AI. This is a demo running in the browser.</div>`;
+                chat.innerHTML += `<div class="message ai">AI: Hi! I'm your free AI. What would you like to talk about?</div>`;
                 chat.scrollTop = chat.scrollHeight;
-            }, 800);
+            }, 500);
         }
     </script>
 </body>
