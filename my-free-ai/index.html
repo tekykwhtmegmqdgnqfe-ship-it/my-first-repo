@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Free AI</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #0d1117; color: #c9d1d9; margin: 0; padding: 16px; }
+        #chat { height: 70vh; overflow-y: scroll; border: 1px solid #30363d; padding: 10px; margin-bottom: 10px; background: #161b22; }
+        .message { margin: 8px 0; padding: 8px; border-radius: 8px; }
+        .user { background: #238636; text-align: right; }
+        .ai { background: #30363d; }
+    </style>
+</head>
+<body>
+    <h1>🤖 My Free AI</h1>
+    <div id="chat"></div>
+    <input type="text" id="input" placeholder="Ask me anything..." style="width:70%">
+    <button onclick="sendMessage()">Send</button>
+
+    <script>
+        async function sendMessage() {
+            const input = document.getElementById('input');
+            const chat = document.getElementById('chat');
+            const text = input.value.trim();
+            if (!text) return;
+
+            // Add user message
+            chat.innerHTML += `<div class="message user">You: ${text}</div>`;
+            input.value = '';
+            chat.scrollTop = chat.scrollHeight;
+
+            // Placeholder AI response (you can replace with real free API later)
+            setTimeout(() => {
+                chat.innerHTML += `<div class="message ai">AI: Hello! I'm your free custom AI. This is a demo running in the browser.</div>`;
+                chat.scrollTop = chat.scrollHeight;
+            }, 800);
+        }
+    </script>
+</body>
+</html>
